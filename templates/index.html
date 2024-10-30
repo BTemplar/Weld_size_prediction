@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Прогнозирование размеров сварного шва</title>
+    <style>
+        body {
+            background-color: #123456; /* Темно синий фон */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: white; /* Белый фон для формы */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Ширина формы */
+            margin-bottom: 20px;
+            margin: auto;
+        }
+        button {
+            display: block;
+            margin: 20px auto; /* Отступы для кнопки по вертикали и горизонтали */
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h1, h2 {
+            text-align: center; /* Центрирование заголовка по горизонтали */
+            margin-bottom: 20px; /* Отступ от заголовка до остальной части формы */
+        }
+        input[type="number"], input[type="float"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Прогнозирование размеров сварного шва при электронно-лучевой сварке тонкостенных конструкций аэрокосмического назначения</h1>
+        <form method="post" action="/">
+            <h2>Ведите 4 параметра <br>('IW', 'IF', 'VW', 'FP'):</h2>
+            <span>Величина сварочного тока: </span><br><input type="number" name="IW" placeholder="IW" required><br><br>
+            <span>Ток фокусировки электронного пучка: </span><br><input type="number" name="IF" placeholder="IF" required><br><br>
+            <span>Скорость сварки: </span><br><input type="float" name="VW" placeholder="VW" required><br><br>
+            <span>Расстояние от поверхности образцов до электронно-оптической системы: </span><br><input type="number" name="FP" placeholder="FP" required><br><br>
+            <button type="submit">Отправить</button>
+            {% if result %}
+                <h3>Предсказание: <br> глубина сварочного шва- {{ result.0 }}, <br>ширина сварочного шва- {{ result.1 }}</h3>
+            {% endif %}
+        </form>
+    </div>
+</body>
+</html>
